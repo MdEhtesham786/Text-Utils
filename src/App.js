@@ -57,43 +57,6 @@ function App() {
     position: 'absolute',
     top: '100px'
   }
-  // PALLETE LOGIC
-
-  // const [palleteBg, setpalleteBg] = useState({
-  //   backgroundColor: 'black'
-  // })
-  // const blackRadio = document.querySelector('.blackRadio')
-  // if (blackRadio) {
-  //   blackRadio.checked = true
-
-  // }
-  // const handleOnChangePallete = (e) => {
-  //   if (blackRadio.checked === true) {
-
-  //     blackRadio.checked = false
-  //   }
-
-  //   e.target.checked = true
-  //   if (e.target.id === 'flexRadioDefault1') {
-  //     console.log('1')
-  //   } else if (e.target.id === 'flexRadioDefault2') {
-  //     setpalleteBg({
-  //       backgroundColor: 'purple'
-  //     })
-  //     setmode('')
-  //     document.body.style.backgroundColor = undefined
-  //     console.log('Working')
-  //   }
-  //   else if (e.target.id === 'flexRadioDefault3') {
-  //     console.log('3')
-
-  //   }
-  //   else if (e.target.id === 'flexRadioDefault4') {
-  //     console.log('3')
-  //   }
-
-  // }
-
   return (<>
     <Navbar title={result.title} link={result.link} mode={mode} toggleMode={toggleMode} txtColor={color} bgColor={bg} palleteStyle={palleteStyle} />
     <Alert alert={alert} />
