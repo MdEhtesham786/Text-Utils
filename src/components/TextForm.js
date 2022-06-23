@@ -30,16 +30,16 @@ export default function TextForm(props) {
                 <div className="mb-3">
                     <textarea className="form-control" value={text} onChange={handleOnChange} id="myBox" rows="8" ></textarea>
                 </div>
-                <button className="btn btn-primary mx-2 my-2" onClick={handleOnClickUppercase}>Uppercase</button>
-                <button className="btn btn-primary mx-2 my-2" onClick={handleOnClickLowercase}>Lowercase</button>
-                <button className="btn btn-danger mx-2 my-2" onClick={handleOnClickClear}>Clear</button>
+                <button disabled={text.length === 0} className="btn btn-primary mx-2 my-2" onClick={handleOnClickUppercase}>Uppercase</button>
+                <button disabled={text.length === 0} className="btn btn-primary mx-2 my-2" onClick={handleOnClickLowercase}>Lowercase</button>
+                <button disabled={text.length === 0} className="btn btn-danger mx-2 my-2" onClick={handleOnClickClear}>Clear</button>
             </div>
             <div className={`container text-${props.mode}`}>
                 <h3>Text Summary</h3>
-                <p>{text.split(' ').length} Words and {text.length} Characters </p>
-                <p>{0.48 * text.split(' ').length} Seconds to read </p>
+                <p>{text.split(' ').filter(e => e.length !== 0).length} Words and {text.length} Characters </p>
+                <p>{0.48 * text.split(' ').filter(e => e.length !== 0).length} Seconds to read </p>
                 <h3>Preview</h3>
-                <p>{text.length > 0 ? text.toLowerCase() : "Type something in above textbox to get preview"} </p>
+                <p>{text.length > 0 ? text.toLowerCase() : "There is no preview"} </p>
             </div>
         </>
     )

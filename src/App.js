@@ -2,10 +2,10 @@ import './App.css';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm'
 import PropTypes from 'prop-types';
-// import About from './components/About';
+import About from './components/About';
 import React, { useState } from 'react'
 import Alert from './components/Alert';
-// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 function App() {
   //ALL STATES
   const [mode, setmode] = useState('light')
@@ -57,17 +57,28 @@ function App() {
     position: 'absolute',
     top: '100px'
   }
-  return (<>
-    <Navbar title={result.title} link={result.link} mode={mode} toggleMode={toggleMode} txtColor={color} bgColor={bg} palleteStyle={palleteStyle} />
-    <Alert alert={alert} />
+  //NAVBAR CSS
+  const navbarStyle = {
+    zIndex: '1'
+  }
+  //ALERT CSS
+  const alertStyle = {
+    zIndex: '1'
+  }
+  return (<Router>
+    <Navbar title={result.title} link={result.link} mode={mode} toggleMode={toggleMode} txtColor={color} bgColor={bg} palleteStyle={palleteStyle} navbarStyle={navbarStyle} />
+    <Alert alert={alert} alertStyle={alertStyle} />
     <div className="container my-3" style={myStyle}>
-      <TextForm title='Enter the text to change it to Uppercase and Lowercase' mode={color} showAlert={showAlert} />
+      <Routes>
+        <Route path='/' element={<TextForm title='Enter the text to change it to Uppercase and Lowercase' mode={color} showAlert={showAlert} />}></Route>
+        <Route path='/about' element={<About mode={mode} />}></Route>
+      </Routes>
     </div>
-  </>
+  </Router>
   );
 }
 export default App;
-let result = { title: 'Text Utils', link: 'Link' }
+let result = { title: 'Text Utils', link: 'About' }
 Navbar.propTypes = {
   title: PropTypes.string.isRequired,
   link: PropTypes.string.isRequired
