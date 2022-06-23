@@ -70,8 +70,8 @@ function App() {
     <Alert alert={alert} alertStyle={alertStyle} />
     <div className="container my-3" style={myStyle}>
       <Routes>
-        <Route path='/Text-Utils/' element={<TextForm title='Enter the text to change it to Uppercase and Lowercase' mode={color} showAlert={showAlert} />}></Route>
-        <Route path='/Text-Utils/about' element={<About mode={mode} />}></Route>
+        <Route path='/' element={<TextForm title='Enter the text to change it to Uppercase and Lowercase' mode={color} showAlert={showAlert} />}></Route>
+        <Route path='/about' element={<About mode={mode} />}></Route>
       </Routes>
     </div>
   </Router>
