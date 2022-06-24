@@ -6,6 +6,9 @@ import About from './components/About';
 import React, { useState } from 'react'
 import Alert from './components/Alert';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+//VARIABLES
+let checkboxes;
+
 function App() {
   //ALL STATES
   const [mode, setmode] = useState('light')
@@ -13,15 +16,18 @@ function App() {
   const [bg, setbg] = useState('white')
   const [alert, setalert] = useState(null)
   const [palleteStyle, setpalleteStyle] = useState({
-    display: 'none',
-    color: 'black'
-
+    visibility: 'hidden',
+    color: 'black',
+    display: 'flex',
   })
 
   //TOGGLE LOGIC
   const toggleMode = () => {
     if (mode === 'light') {
-      removeClasses()
+      checkboxes = Array.from(document.getElementsByClassName('palletes'))
+
+      checkboxes[0].classList.add('border')
+      checkboxes[0].classList.add('border-white')
       setmode('dark')
       setcolor('light')
       setbg('black')
@@ -31,18 +37,17 @@ function App() {
         display: 'flex',
         color: 'white'
       })
-
     } else {
       removeClasses()
-
       setmode('light')
       setcolor('dark')
       setbg('white')
       showAlert('success', 'Dark mode disabled')
       document.body.style.backgroundColor = 'white'
       setpalleteStyle({
-        display: 'none',
-        color: 'black'
+        visibility: 'hidden',
+        color: 'black',
+        display: 'flex'
       })
     }
   }
@@ -69,17 +74,26 @@ function App() {
     zIndex: '1'
   }
   //CUSTOM PALLETE
+
   const removeClasses = () => {
+    checkboxes = Array.from(document.getElementsByClassName('palletes'))
     document.body.classList.remove('bg-primary')
-    document.body.classList.remove('bg-warning')
-    document.body.classList.remove('bg-danger')
     document.body.classList.remove('bg-success')
-    document.body.classList.remove('border')
-    document.body.classList.remove('border-white')
+    document.body.classList.remove('bg-danger')
+    document.body.classList.remove('bg-secondary')
+    document.body.classList.remove('bg-dark')
+    for (let i = 0; i < checkboxes.length; i++) {
+      checkboxes[i].classList.remove('border')
+      checkboxes[i].classList.remove('border-white')
+    }
   }
 
-  const customPallete = (cls, no) => {
+  const customPallete = (cls, i) => {
+    checkboxes = Array.from(document.getElementsByClassName('palletes'))
+
     removeClasses()
+    checkboxes[i].classList.add('border')
+    checkboxes[i].classList.add('border-white')
     document.body.classList.add(`bg-${cls}`)
 
   }
