@@ -21,6 +21,7 @@ function App() {
   //TOGGLE LOGIC
   const toggleMode = () => {
     if (mode === 'light') {
+      removeClasses()
       setmode('dark')
       setcolor('light')
       setbg('black')
@@ -32,6 +33,8 @@ function App() {
       })
 
     } else {
+      removeClasses()
+
       setmode('light')
       setcolor('dark')
       setbg('white')
@@ -65,8 +68,24 @@ function App() {
   const alertStyle = {
     zIndex: '1'
   }
+  //CUSTOM PALLETE
+  const removeClasses = () => {
+    document.body.classList.remove('bg-primary')
+    document.body.classList.remove('bg-warning')
+    document.body.classList.remove('bg-danger')
+    document.body.classList.remove('bg-success')
+    document.body.classList.remove('border')
+    document.body.classList.remove('border-white')
+  }
+
+  const customPallete = (cls, no) => {
+    removeClasses()
+    document.body.classList.add(`bg-${cls}`)
+
+  }
+
   return (<Router>
-    <Navbar title={result.title} link={result.link} mode={mode} toggleMode={toggleMode} txtColor={color} bgColor={bg} palleteStyle={palleteStyle} navbarStyle={navbarStyle} />
+    <Navbar title={result.title} link={result.link} mode={mode} toggleMode={toggleMode} txtColor={color} bgColor={bg} palleteStyle={palleteStyle} navbarStyle={navbarStyle} customPallete={customPallete} removeClasses={removeClasses} />
     <Alert alert={alert} alertStyle={alertStyle} />
     <div className="container my-3" style={myStyle}>
       <Routes>

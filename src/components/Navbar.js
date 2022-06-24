@@ -28,6 +28,13 @@ export default function Navbar(props) {
                             </ul>
                         </li>
                     </ul>
+                    <div className="customPallete " style={props.palleteStyle}>
+                        <div className=" rounded mx-2 palletes border border-white" onClick={() => { props.removeClasses() }} style={{ height: '25px', width: '25px', backgroundColor: 'black', cursor: 'pointer' }}></div>
+                        <div className="bg-primary rounded mx-2 palletes" onClick={() => { props.customPallete('primary', 0) }} style={{ height: '25px', width: '25px', cursor: 'pointer' }}></div>
+                        <div className="bg-warning rounded mx-2 palletes" onClick={() => { props.customPallete('warning', 1) }} style={{ height: '25px', width: '25px', cursor: 'pointer' }}></div>
+                        <div className="bg-danger rounded mx-2 palletes" onClick={() => { props.customPallete('danger', 2) }} style={{ height: '25px', width: '25px', cursor: 'pointer' }}></div>
+                        <div className="bg-success rounded mx-2 palletes" onClick={() => { props.customPallete('success', 3) }} style={{ height: '25px', width: '25px', cursor: 'pointer' }}></div>
+                    </div>
                     <div className={`form-check form-switch text-${props.txtColor}`}>
                         <input className="form-check-input" onClick={props.toggleMode} type="checkbox" role="switch" id="flexSwitchCheckDefault" />
                         <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Enable Dark Mode</label>
